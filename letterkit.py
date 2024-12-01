@@ -71,7 +71,7 @@ class LetterKit:
         self._gotoxy(0, -50)
         self._gotoxy(-50, 0)
         self._gotoxy(60, 0)
-        self._gotoxy(0, 50)
+        self._gotoxy(0, -50)
         self._gotoxy(-60, 0)
         self._penup()
         self._gotoxy(100, 0)
@@ -125,7 +125,7 @@ class LetterKit:
         self._pendown()
         self._gotoxy(50, 0)
         self._penup()
-        self._gotoxy(40, 50)
+        self._gotoxy(40, -50)
         self._command("; End of letter F")
     
     def g(self): 
@@ -248,7 +248,7 @@ class LetterKit:
         self._gotoxy(-50, 0)
 
         self._penup()
-        self._gotoxy(-100, -50)
+        self._gotoxy(100, -50)
         self._command("; End of letter P")
     
     def q(self, acknowledge:bool=False) -> NotImplementedError:
@@ -261,14 +261,15 @@ class LetterKit:
 
     def r(self):
         self._command("; Write letter R")
+
         self._pendown()
         self._gotoxy(0, 100)
         self._gotoxy(50, 0)
         self._gotoxy(0, -50)
         self._gotoxy(-50, 0)
-        self._gotoxy(-50, -50)
+        self._gotoxy(50, -50)
         self._penup()
-        self._gotoxy(50, 0)
+        self._gotoxy(50,0 )
         self._command("; End of letter R")
     
     def s(self): # TODO: Besser machen
