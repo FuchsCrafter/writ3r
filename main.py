@@ -77,20 +77,54 @@ if __name__ == "__main__":
     letters._pendown_z = pendown_z
     letters._penup_z = penup_z
 
-    letters.h()
+    """
+    for letter in 'abcdefghijklmnopqrstuvwxyz':
+        getattr(letters, letter)()"""
+
     letters.a()
-    letters.l()
-    letters.l()
-    letters.o()
-    letters.space()
-    letters.w()
+    letters.b()
+    letters.c()
+    letters.d(acknowledge=True)
     letters.e()
+    letters.f()
+    letters.g()
+
+
+    set_abs()
+    gotoxy(80, 150)
+    set_rel()
+
+    letters.h()
+    letters.i()
+    letters.j(acknowledge=True)
+    letters.k()
     letters.l()
+    letters.m()
+    letters.n()
+
+
+    set_abs()
+    gotoxy(80, 120)
+    set_rel()
+
+    letters.o()
+    letters.p()
+    letters.q(acknowledge=True)
+    letters.r()
+    letters.s()
     letters.t()
+    letters.u()
+    letters.v(acknowledge=True)
+    letters.w()
+    letters.x(acknowledge=True)
+    letters.y(acknowledge=True)
+    letters.z(acknowledge=True)
 
     gcode.extend(letters._gcode)
 
     penup()
+    set_abs()
+    command(f"G1 Z{penup_z+20}")
 
 
     writeout()
