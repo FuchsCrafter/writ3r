@@ -1,9 +1,10 @@
 import os,sys
+from letterkit import LetterKit
 
 global pendown_z, penup_z, is_rel, outpu_file
 
 pendown_z = 57.2
-penup_z = pendown_z +4
+penup_z = pendown_z +2
 
 is_rel = False
 
@@ -67,23 +68,27 @@ def writeout():
 
 if __name__ == "__main__":
     penup()
-    gotoxy(150,150)
+    gotoxy(80,180)
     pendown()
 
     set_rel()
 
-    # H Buchstabe
-    gotoxy(0, 10) # h strich hoch
-    gotoxy(0, -5) # hälfte runter
-    gotoxy(5,0) # zur seite
-    gotoxy(0,5) # hoch
-    gotoxy(0,-10) # runter
+    letters = LetterKit()
+    letters._pendown_z = pendown_z
+    letters._penup_z = penup_z
 
-    # I buchstabe
-    penup()
-    gotoxy(5,0) # zur seite
-    pendown() 
-    gotoxy(0,10) # hoch
+    letters.h()
+    letters.a()
+    letters.l()
+    letters.l()
+    letters.o()
+    letters.space()
+    letters.w()
+    letters.e()
+    letters.l()
+    letters.t()
+
+    gcode.extend(letters._gcode)
 
     penup()
 
