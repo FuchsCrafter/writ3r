@@ -68,7 +68,7 @@ def writeout():
 
 if __name__ == "__main__":
     penup()
-    gotoxy(80,180)
+    gotoxy(20,185)
     pendown()
 
     set_rel()
@@ -89,11 +89,10 @@ if __name__ == "__main__":
     letters.f()
     letters.g()
 
-
-    set_abs()
-    gotoxy(80, 150)
-    set_rel()
-
+    letters._set_abs()
+    letters._gotoxy(20*10, 175*10)
+    letters._set_rel()
+    
     letters.h()
     letters.i()
     letters.j(acknowledge=True)
@@ -102,10 +101,9 @@ if __name__ == "__main__":
     letters.m()
     letters.n()
 
-
-    set_abs()
-    gotoxy(80, 120)
-    set_rel()
+    letters._set_abs()
+    letters._gotoxy(20*10, 165*10)
+    letters._set_rel()
 
     letters.o()
     letters.p()
