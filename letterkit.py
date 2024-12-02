@@ -1,7 +1,8 @@
 # from main import *
+from copy import deepcopy
 
 class LetterKit:
-    # TODO: Implement letters D, J, Q, V, X, Y, Z
+    # TODO: Implement letters D, Q, X, Z
     def __init__(self, scale:int=1):
 
         self.size = scale
@@ -43,6 +44,11 @@ class LetterKit:
         self._command(f"G1 Z{self._pendown_z}; PENDOWN")
         if was_rel: 
             self._set_rel()  
+    
+    def outputGcode(self) -> list:
+        a = deepcopy(self._gcode)
+        self._gcode = []
+        return a
 
     
     """doc
