@@ -2,7 +2,7 @@
 from copy import deepcopy
 
 class LetterKit:
-    # TODO: Implement letters D, Q, X, Z
+    # TODO: Implement letters D, Q
     def __init__(self, scale:int=1):
 
         self.size = scale
@@ -351,17 +351,20 @@ class LetterKit:
         self._gotoxy(50, -100)
         self._command("; End of letter W")
 
-    def x(self, acknowledge:bool=False) -> NotImplementedError:
-        # TODO: Implement letter
-        self._command("; Letter X: Not implemented yet!")
-        if not acknowledge:
-            raise NotImplementedError("Letter X not implemented yet! Aborting!\nYou may skip this by setting acknowledge to True!")
-        else: 
-            print("Please note that the letter X is not implemented yet")
+    def x(self, acknowledge:bool=False): # TODO: Remove acknowledge flag
+        self._command("; Write letter X")
+        self._pendown()
+        self._gotoxy(50, 100)
+        self._penup()
+        self._gotoxy(-50, 0)
+        self._pendown()
+        self._gotoxy(50, -100)
+        self._penup()
+        self._gotoxy(50, 0)
+        self._command("; End of letter X")
 
     def y(self, acknowledge:bool=False): # TODO: Remove acknowledge flag
-        self._command("; Writing letter Y")
-        
+        self._command("; Write letter Y")
         self._gotoxy(25, 50)
         self._pendown()
         self._gotoxy(-25, 50)
@@ -374,13 +377,16 @@ class LetterKit:
         self._gotoxy(75, 0)
         self._command("; End of letter Y")
 
-    def z(self, acknowledge:bool=False) -> NotImplementedError:
-        # TODO: Implement letter
-        self._command("; Letter Z: Not implemented yet!")
-        if not acknowledge:
-            raise NotImplementedError("Letter Z not implemented yet! Aborting!\nYou may skip this by setting acknowledge to True!")
-        else: 
-            print("Please note that the letter Z is not implemented yet")
+    def z(self, acknowledge:bool=False): # TODO: Remove acknowledge flag
+        self._command("; Write letter Z")
+        self._gotoxy(0, 100)
+        self._pendown()
+        self._gotoxy(50, 0)
+        self._gotoxy(-50, -100)
+        self._gotoxy(50, 0)
+        self._penup()
+        self._gotoxy(50, 0)
+        self._command("; End of letter Z")
     
     def space(self):
         self._command("; Blank space 1cm")
