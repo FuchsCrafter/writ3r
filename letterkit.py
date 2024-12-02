@@ -98,6 +98,18 @@ class LetterKit:
         else: 
             print("Please note that the letter D is not implemented yet")
 
+            self._command("; Write letter D")
+            self._pendown()
+            self._gotoxy(0, 100)
+            self._gotoxy(25, 0)
+            self._gotoxy(25, -25)
+            self._gotoxy(0, -50)
+            self._gotoxy(-25, -25)
+            self._gotoxy(-25, 0)
+            self._penup()
+            self._gotoxy(100, 0)
+            self._command("; End of letter D")
+
     def e(self): 
         self._command("; Write letter E")
         self._pendown()
@@ -182,7 +194,18 @@ class LetterKit:
             raise NotImplementedError("Letter J not implemented yet! Aborting!\nYou may skip this by setting acknowledge to True!")
         else: 
             print("Please note that the letter J is not implemented yet")
-    
+
+            self._command("; Write letter J")
+            self._gotoxy(0, 25)
+            self._pendown()
+            self._gotoxy(0, -25)
+            self._gotoxy(50, 0)
+            self._gotoxy(0, 100)
+            self._penup()
+            self._gotoxy(50, -100)
+            self._command("; End of letter J")
+
+
     def k(self):
         self._command("; Write letter K")
         self._pendown()
@@ -315,6 +338,15 @@ class LetterKit:
             raise NotImplementedError("Letter V not implemented yet! Aborting!\nYou may skip this by setting acknowledge to True!")
         else: 
             print("Please note that the letter V is not implemented yet")
+
+            self._command("; Writing letter V")
+            self._gotoxy(0, 100)
+            self._pendown()
+            self._gotoxy(25, -100)
+            self._gotoxy(25, 100)
+            self._penup()
+            self._gotoxy(50, -100)
+            self._command("; End of Letter V")
     
     def w(self):
         self._command("; Write letter W")
@@ -344,6 +376,19 @@ class LetterKit:
         else: 
             print("Please note that the letter Y is not implemented yet")
 
+            self._command("; Writing letter Y")
+            
+            self._gotoxy(25, 50)
+            self._pendown()
+            self._gotoxy(-25, 50)
+            self._penup()
+            self._gotoxy(50, 0)
+            self._pendown()
+            self._gotoxy(-25, -50)
+            self._gotoxy(0, -50)
+            self._penup()
+            self._gotoxy(75, 0)
+            self._command("; End of letter Y")
 
     def z(self, acknowledge:bool=False) -> NotImplementedError:
         # TODO: Implement letter
