@@ -91,12 +91,11 @@ class LetterKit:
         self._command("; End of Letter C")
     
     def d(self, acknowledge: bool=False) -> NotImplementedError:
-        # TODO: Implement letter
-        self._command("; Letter D: Not implemented yet!")
+        # TODO: Finish letter
         if not acknowledge:
             raise NotImplementedError("Letter D not implemented yet! Aborting!\nYou may skip this by setting acknowledge to True!")
         else: 
-            print("Please note that the letter D is not implemented yet")
+            print("Please note that the letter D is currently in Beta!")
 
             self._command("; Write letter D")
             self._pendown()
@@ -187,23 +186,16 @@ class LetterKit:
         self._gotoxy(75, 0)
         self._command("; End of letter I")
     
-    def j(self, acknowledge:bool=False) -> NotImplementedError:
-        # TODO: Implement letter
-        self._command("; Letter J: Not implemented yet!")
-        if not acknowledge:
-            raise NotImplementedError("Letter J not implemented yet! Aborting!\nYou may skip this by setting acknowledge to True!")
-        else: 
-            print("Please note that the letter J is not implemented yet")
-
-            self._command("; Write letter J")
-            self._gotoxy(0, 25)
-            self._pendown()
-            self._gotoxy(0, -25)
-            self._gotoxy(50, 0)
-            self._gotoxy(0, 100)
-            self._penup()
-            self._gotoxy(50, -100)
-            self._command("; End of letter J")
+    def j(self, acknowledge:bool=False): # TODO: Remove acknowledge flag
+        self._command("; Write letter J")
+        self._gotoxy(0, 25)
+        self._pendown()
+        self._gotoxy(0, -25)
+        self._gotoxy(50, 0)
+        self._gotoxy(0, 100)
+        self._penup()
+        self._gotoxy(50, -100)
+        self._command("; End of letter J")
 
 
     def k(self):
@@ -331,22 +323,15 @@ class LetterKit:
         self._gotoxy(50, -100)
         self._command("; End of letter U")
 
-    def v(self, acknowledge:bool=False) -> NotImplementedError:
-        # TODO: Implement letter
-        self._command("; Letter V: Not implemented yet!")
-        if not acknowledge:
-            raise NotImplementedError("Letter V not implemented yet! Aborting!\nYou may skip this by setting acknowledge to True!")
-        else: 
-            print("Please note that the letter V is not implemented yet")
-
-            self._command("; Writing letter V")
-            self._gotoxy(0, 100)
-            self._pendown()
-            self._gotoxy(25, -100)
-            self._gotoxy(25, 100)
-            self._penup()
-            self._gotoxy(50, -100)
-            self._command("; End of Letter V")
+    def v(self, acknowledge:bool=False): # TODO: Remove acknowledge flag
+        self._command("; Writing letter V")
+        self._gotoxy(0, 100)
+        self._pendown()
+        self._gotoxy(25, -100)
+        self._gotoxy(25, 100)
+        self._penup()
+        self._gotoxy(50, -100)
+        self._command("; End of Letter V")
     
     def w(self):
         self._command("; Write letter W")
@@ -368,27 +353,20 @@ class LetterKit:
         else: 
             print("Please note that the letter X is not implemented yet")
 
-    def y(self, acknowledge:bool=False) -> NotImplementedError:
-        # TODO: Implement letter
-        self._command("; Letter Y: Not implemented yet!")
-        if not acknowledge:
-            raise NotImplementedError("Letter Y not implemented yet! Aborting!\nYou may skip this by setting acknowledge to True!")
-        else: 
-            print("Please note that the letter Y is not implemented yet")
-
-            self._command("; Writing letter Y")
-            
-            self._gotoxy(25, 50)
-            self._pendown()
-            self._gotoxy(-25, 50)
-            self._penup()
-            self._gotoxy(50, 0)
-            self._pendown()
-            self._gotoxy(-25, -50)
-            self._gotoxy(0, -50)
-            self._penup()
-            self._gotoxy(75, 0)
-            self._command("; End of letter Y")
+    def y(self, acknowledge:bool=False): # TODO: Remove acknowledge flag
+        self._command("; Writing letter Y")
+        
+        self._gotoxy(25, 50)
+        self._pendown()
+        self._gotoxy(-25, 50)
+        self._penup()
+        self._gotoxy(50, 0)
+        self._pendown()
+        self._gotoxy(-25, -50)
+        self._gotoxy(0, -50)
+        self._penup()
+        self._gotoxy(75, 0)
+        self._command("; End of letter Y")
 
     def z(self, acknowledge:bool=False) -> NotImplementedError:
         # TODO: Implement letter
