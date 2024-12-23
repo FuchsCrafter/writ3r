@@ -68,7 +68,7 @@ def writeout():
 
 if __name__ == "__main__":
     penup()
-    gotoxy(20,185)
+    gotoxy(10, 200)
     pendown()
 
     set_rel()
@@ -77,48 +77,32 @@ if __name__ == "__main__":
     letters._pendown_z = pendown_z
     letters._penup_z = penup_z
 
-    """
-    for letter in 'abcdefghijklmnopqrstuvwxyz':
-        getattr(letters, letter)()"""
-
-    letters.a()
-    letters.b()
-    letters.c()
-    letters.d(acknowledge=True)
-    letters.e()
-    letters.f()
-    letters.g()
-
-    letters._set_abs()
-    letters._gotoxy(20*10, 175*10)
-    letters._set_rel()
+    # abcdefg hijklmnop qrstuvwxyz
+    for letter in 'abcdefg':
+        getattr(letters, letter)()
     
-    letters.h()
-    letters.i()
-    letters.j(acknowledge=True)
-    letters.k()
-    letters.l()
-    letters.m()
-    letters.n()
+    gcode.extend(letters.outputGcode())
 
-    letters._set_abs()
-    letters._gotoxy(20*10, 165*10)
-    letters._set_rel()
+    
+    set_abs()
+    gotoxy(10, 185)
+    set_rel()
+    
 
-    letters.o()
-    letters.p()
-    letters.q(acknowledge=True)
-    letters.r()
-    letters.s()
-    letters.t()
-    letters.u()
-    letters.v(acknowledge=True)
-    letters.w()
-    letters.x(acknowledge=True)
-    letters.y(acknowledge=True)
-    letters.z(acknowledge=True)
+    for letter in 'hijklmnop':
+        getattr(letters, letter)()
+    
+    gcode.extend(letters.outputGcode())
 
-    gcode.extend(letters._gcode)
+
+    set_abs()
+    gotoxy(10, 170)
+    set_rel()
+
+    for letter in 'qrstuvwxyz':
+        getattr(letters, letter)()
+
+    gcode.extend(letters.outputGcode())
 
     penup()
     set_abs()
