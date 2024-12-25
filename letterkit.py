@@ -241,7 +241,7 @@ class LetterKit:
         self._gotoxy(25, 100)
         self._penup()
         self._gotoxy(75, -100)
-        self._command("; End of letter J")
+        self._command("; End of letter N")
     
     def o(self):
         self._command("; Write letter O")
