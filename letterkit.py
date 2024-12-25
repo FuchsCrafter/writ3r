@@ -8,7 +8,7 @@ class LetterKit:
         self.size = scale
         self.scale = self.size
         self._gcode = [f"; LetterKit Gcode with scale of {self.size} "]
-        self._cnc = False
+        self._cnc = True
         self._pendown_z = 57.2
         self._penup_z = self._pendown_z +4  
 

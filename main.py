@@ -1,7 +1,9 @@
 import os,sys
 from letterkit import LetterKit
+from tkinter import *
+from tkinter.ttk import *
 
-global pendown_z, penup_z, is_rel, outpu_file
+global pendown_z, penup_z, is_rel, outpu_file, gcode
 
 pendown_z = 57.2
 penup_z = pendown_z +2
@@ -66,43 +68,66 @@ def writeout():
         f.write(el + "\n\n")
     f.close()
 
-if __name__ == "__main__":
+def transform_to_2d_list(original_list, n):
+    return [original_list[i:i + n] for i in range(0, len(original_list), n)]
+
+
+def main():
+    global txtinp
+    global gcode
+    global current_y
     penup()
     gotoxy(10, 200)
     pendown()
-
-    set_rel()
 
     letters = LetterKit()
     letters._pendown_z = pendown_z
     letters._penup_z = penup_z
 
-    # abcdefg hijklmnop qrstuvwxyz
-    for letter in 'abcdefg':
-        getattr(letters, letter)()
+
+    # Hier wird der Input gelesen und dann bereinigt, dass man am ende ein 2d-array hat, bei welchem jede "unterliste" 15 elemente hat (= 15 zeichen lang ist)
+    allowlist = list("abcdefghijklmnopqrstuvwxyz ") # Liste mit zeichen die erlaubt sind (auch das leerzeichen)
+    text = list(txtinp.get('1.0','end').lower()) # input einlesen und kleiner machen
+    text = [el for el in text if el in allowlist] # filtern mithilfe der allowlist
+    text = ["space" if el == " " else el for el in text] # alle leerzeichen mit "space" ersetzen wegen funktionsname
+    text = transform_to_2d_list(text, 15) # EINE ZEILE => 15 ZEICHEN
+    print(text)
+
+    current_y = 270 # HÖCHSTER Y-WERT
+    start_x = 15 # ABSTAND ZUM RAND BEIM START
+
+    letters._set_abs()
+    letters._gotoxy(start_x*10, current_y*10, "New line")
+    letters._set_rel()
+
+
+
+    for zeile in text:
+
+        current_y = current_y -  12 # ZEILENHÖHE
+
+        for el in zeile:
+            getattr(letters, el)()
+        
+
+        letters._set_abs()
+        letters._gotoxy(start_x*10, current_y*10, "New line")
+        letters._set_rel()
     
     gcode.extend(letters.outputGcode())
 
+        
+
+    # for letter in 'abcdefg':
+    #     getattr(letters, letter)()
+    # 
+    # gcode.extend(letters.outputGcode())
+
     
-    set_abs()
-    gotoxy(10, 185)
-    set_rel()
-    
+    # set_abs()
+    # gotoxy(10, 185)
+    # set_rel()
 
-    for letter in 'hijklmnop':
-        getattr(letters, letter)()
-    
-    gcode.extend(letters.outputGcode())
-
-
-    set_abs()
-    gotoxy(10, 170)
-    set_rel()
-
-    for letter in 'qrstuvwxyz':
-        getattr(letters, letter)()
-
-    gcode.extend(letters.outputGcode())
 
     penup()
     set_abs()
@@ -110,3 +135,21 @@ if __name__ == "__main__":
 
 
     writeout()
+
+
+
+if __name__ == "__main__":
+
+    root = Tk()
+    root.geometry("300x450")
+    root.title("writ3r")
+
+    txtinp = Text(root)
+    txtinp.pack(pady=5)
+
+    writebtn = Button(root, text="Writeout", command=main)
+    writebtn.pack(pady=5)
+
+
+
+    root.mainloop()
