@@ -77,8 +77,6 @@ def main():
     global gcode
     global current_y
     penup()
-    gotoxy(10, 200)
-    pendown()
 
     letters = LetterKit()
     letters._pendown_z = pendown_z
